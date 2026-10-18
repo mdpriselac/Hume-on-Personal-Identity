@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron my-3">
+  <h2 class="display-3">Project Overview</h2>
+  <p class="lead">Below you'll find some details concerning the motivations for this project, descriptions of how citations are extracted from publications, how publications are compared, and how the project will unfold in the future.</p>
+</div>
+
+<div class='container'>
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#motivation">Project Motivation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#lit">Defining the Literature</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#search">Extracting Citations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#similarity">Comparing Articles</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#future">Future Plans</a>
+    </li>
+  </ul>
+
+  <div id="myTabContent" class="tab-content">
+    <div class='tab-pane fade active show' id='motivation'>
+      <div class="card text-white bg-secondary mb-3">
+        <div class='card-header'><h3>Project Motivation</h3></div>
+        <div class='card-body'>
+          <p>
+            Hume published his <i>Treatise of Human Nature</i> in 1739. It’s an enormous text that covers an incredible range of philosophical topics. The text is divided into 3 books, each of which is divided into 3-4 parts, each of which contains 7-17 chapters of varying lengths [for our purposes, each paragraph in those chapters is also numbered]. The Treatise also has philosophically interesting material in its Appendix and Abstract which were written and added to the Treatise more than a year after its initial publication.
+          </p>
+
+          <p>
+            The goal of the project here is to provide insight to novices about where to start their reading in the massive tome, given their philosophical interests and to provide expert scholars insight into the scholarly literuatre on any given topic.
+          </p>
+
+          <p>
+          The copy of the <i>Treatise</i> that I'm using to define the paragraphs and chapters of this project is from <a class='link bg-light' href='https://davidhume.org/texts/t/'>Hume Texts Online</a>. You can find the .txt version I've used to define the chapters and paragraphs for this project in the project's <a class='link bg-light' href='https://github.com/mattpriselac/Single-File-Processing-for-Hume-Project'>github repository</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class='tab-pane fade' id='lit'>
+      <div class="card text-white bg-secondary mb-3">
+        <div class='card-header'><h3>Classifying publications by topic</h3></div>
+        <div class='card-body'>
+          <p>
+            The basic premise for this project is that you get a good window into <i>where</i> in the <i>Treatise</i> a given philosohpical topic is discussed by seeing where in the <i>Treatise</i> scholars cite when publishing their work. So, one of the inputs is that described above—a structural outline of the <i>Treatise</i>. I've chosen to build that map at the most fine grained level that is feasible (paragraph level) which then allows us to decribe chapter, section or book level structure. The other input needed to make this project work, however, is the classification of a given publication as on a particular topic or not. How, for example, do I classify a publication on Hume's philosophy of personal identity or not?
+          </p>
+
+          <p>
+          One strategy would be to use journal keywords. A better option, however, is provided by <a class='link bg-light' href='https://philpapers.org'>PhilPapers</a>. <a class='link bg-light' href='https://philpapers.org'>PhilPapers</a> is (among other things) an indexing site that is curated by experts. Professional philosophers (with the assistance of keyword scanning automated tools) edit index leafs to keep the list of publications in the given topic up to date.
+          </p>
+
+          <p>
+          The leaf that I've used to construct the data set here is <a class='link bg-light' href='https://philpapers.org/browse/hume-personal-identity'>Hume on Personal Identity</a>. As of June 25, 2020, it contains 143 publicatoins in several different languages. So far I have processed 101 of those publications to add their information to the database. Not all of the publications are easily accessible in any digital format. I will be continuously adding publications as I acquire them.
+          </p>
+          <p>
+          For books that appear in the <a class='link bg-light' href='https://philpapers.org/browse/hume-personal-identity'>Hume on Personal Identity</a> index, I have used my discretion on whether to include the whole book or only relevant chapters depending on whether the book is more or less entirely dedicated to the subject or developing a systematic interpereation rellevant to the subject.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class='tab-pane fade' id='search'>
+      <div class="card text-white bg-secondary mb-3">
+        <div class='card-header'><h3>Search Processes</h3></div>
+        <div class='card-body'>
+          <p>
+            If you've clicked through the website so far you'll have noticed the terms 'Aggressive' and 'Strict' as ways used to distinguish different sets of data. For example, if you click on an individual article, you'll see four sets of citations found in the article—'Strict, Chapter', 'Strict, Paragraph', 'Aggressive, Chapter', and 'Aggressive, Paragraph'. The 'chapter' and 'paragraph' descriptors are fairly straightforward. The lists of citations contained in each data set are lists of chapter-level citations (e.g. Book 1, Section 2, Chapter 3, or '1.2.3') or paragraph-level citations (e.g. Book 1, Section 2, Chapter 3, Paragraph 4, or '1.2.3.4').
+          </p>
+
+          <p>
+            'Aggressive' versus 'Strict' terms are less clear. These terms refer to different search strategies for extracting citations from publication texts. 'Strict' search conditions are conditions that I am highly confident are yielding actual citations in a publication to the <i>Treatise</i>. The pieces of text extracted by a strict search match the following patterns (for those interested in the RegularExpressions used, you can find the details on the project's <a class='link bg-light' href='https://github.com/mattpriselac/Single-File-Processing-for-Hume-Project'>github repository</a>. The relevant code is in the <a class='link bg-light' href='https://github.com/mattpriselac/Single-File-Processing-for-Hume-Project/blob/refining-search/functions_and_classes/classes.py'>Paper class  structures</a>.)
+          </p>
+          <p>Some sample patterns that match the strict search conditions are:
+            <ul>
+              <li>'Norton' structural citations such as 1.2.3 or 1.2.3.4 (including lists and ranges of such chapters or paragraphs, e.g. '1.2.3.4-5', or '1.2.3.4,5,8-10', or '1.2.3-4', or '1.2.3.4-5, 8, 19-21', etc.). The search conditions for Norton style citations also identifies roman numerals that are often used for Book or Section numbers in upper and lower case.</li>
+              <li>Explicit reference to Selby-Biggs-Norton editions of Hume's works. These are quite nice to pick out because these citations are generally enclosed in parentheses and start with SBN and are followed by a page number in roman and arabic numerals. For example: (SBN 123), (SBN 123-5,35,40-55), would all be identified as SBN citations.
+                <ul><li>A current trend in citations to Hume's works is to provide <i>both</i>the Norton structural location as well as SBN page number(s). Care has been taken to not double count such citations.</li></ul>
+                </li>
+              <li>Explicit Hume or <i>Treatise</i> edition citations that are in fact to SBN editions but not explicitly declared as such. These citations, however, are often prefacted by something to explicitly mark them as citations to the SBN editions of Hume's works. For example, in many articles published by <i>Hume Studies</i>, citations to the <i>Treatise</i> look like (T 123) (T 123, 234), etc. Other versions of this kind of explicit citation to the Treatise are citations that cite (THN ...) or (Treatise ...) or even (Hume, ...) where the page number filling in the '...' is a page number for the <i>Treatise</i>).</li>
+            </ul>
+          </p>
+          <p>
+            After processing a publication to extract all citations, a list of 'Strict' citations is generated by first checking if there are a high enough percentage of Norton structure style citations among all the citatoins. If there are enough such citations then the list of citations extracted from the work just is the list of Norton style citations. If there aren't a lot of norton style citations, then the strict citation list will contain <i>both</i> norton and explicit SBN citations. If there aren't many of <i>either</i> of those, then the explicit Hume or Treatise references will also be added into the list of strict citations.
+          </p>
+          <p>
+            'Aggressive' search results include the entire range of strict citations and add another class of citations. For many articles, especially older articles focused on Hume's philosophy, the SBN editions of Hume's works are being cited but without any explicit indicator that it is Hume's works. For example, '(p. 123)' or even just '(123)'. I've called this an aggressive search because while it caputres <i>more</i> citations to the <i>Treatise</i> it also captures instances of such patterns that are <i>not</i> citations to things other than Hume's works. For example, in articles comparing Hume's philosohpy of personal identity to the views of other philosophers, page numbers in parentheses often refer to the other philosopher's works. Such parenthetical citations can also refer to other scholarly works or even simply be used to label the premises of a scholar's argument.
+          </p>
+          <p>
+            While I tinkered with a few different strategies for making the Aggressive search pattern as reliable as possible, I settled on the following. First, after collecting all text enclosed in parentheses, the Aggressive search removes everything except parentheticals that start with 'p','p.','pp', or 'pp.' or else include <i>only</i> a two or three digit number (e.g. 12, or 123). Why not one digit numbers? I found that people so frequently use (1), (2), (3) (and roman numeral variants) etc. to number arguments or points that a search which includes single digit numbers that are not prefaced by 'p search will pull far, far too many false positives. Such a search pattern yields the result that the Introduction to the <i>Treatise</i> is cited as many times as the two other main textual locations (Book I, Section 4, Chapter 6 and the Appendix) even though strict search conditions suggest it almost never cited.
+          </p>
+          <p>
+            As the project continues to develop, better and more sophisticated tools and search patterns will be added to more accurately extract citations to Hume's work. However, given trends in scholarship, this is unlikely to be relevant for research published going forward as nearly all such scholarly work provides both Norton style structural citations or explict SBN page number citations. Improved citations are thus mostly about better processing older publications.
+          </p>
+        </div>
+        <div class='card-header'><h5>Crediting Locations for Citations</h5></div>
+        <div class='card-body'>
+          <p>
+            Once a citation has been found, the next step is to distribute credit for that citation to paragraphs in the <i>Treatise</i>. When each publication is processed it is assigned a 'score sheet'. On the publication's score sheet, each paragraph in the <i>Treatise</i> is given a score which is updated when a citation is found. Each paragraph starts with a zero.  The guiding principle for distributing credit is that each citations has one 'point' to be distributed to each paragraph reerenced in the citation. So, points are distributed to each paragraph in a citation as follows:
+            <ul>
+              <li>If the citation is only a single paragraph, that paragraph is attributed 1 point in the publication's 'score sheet.'</li>
+              <li>If the citation is a list of <b>n</b> paragraphs, each paragraph gets 1/n points.</li>
+              <li>If the citation is a chapter, and the chapter has <b>n</b> paragraphs, each paragraph gets 1/n points.</li>
+              <li>etc.</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class='tab-pane fade' id='similarity'>
+      <div class="card text-white bg-secondary mb-3">
+        <div class='card-header'><h3>Similarity and Comparison between articles</h3></div>
+        <div class='card-body'>
+          <p>
+            The <a class='link bg-light' href='{{ url_for("publications") }}'>Publications</a> section of the website allows you to see how individual publications compare to one another and to the literature as a whole. Similarity is under two constraints.
+          </p>
+          <p>
+            First, publications are (for now) compared in a <i>relative</i> way. That is, they're compared by looking at what <i>percentage</i> of their citations are to each location. In the future there will be an option added to allow you to search by the raw count of citations instead of the relative citation frequency.
+          </p>
+          <p>
+            Second, comparisons are only within the same search and location types. This is because each combination of location and search type generates different similarity scores. That is, comparing articles with respect to the percentage of their citations dedicated to each chapter in the <i>Treatise</i>—as extracted using a strict search—will yield different results than comparing articles with respect to the percentage of their citations dedicated to each paragraph in the <i>Treatise</i>—as extracted using a strict search. And of course different search types will yield different comparative results.
+          </p>
+          <p>
+            Comparisons are calculated over each text location. The difference between each publication is added up for a total score. Since these are all relative comparisons using the percentage of a publication's citations to each location, the maximum difference between two publications is 200, which happens when there is no overlap between two articles. The difference between a publication with <i>any</i> citations and a publication with zero citations is 100. Soon, the project will add a grade to each comparison score between articles, with A-quality comparisons in the top 10% for <b>all</b> comparisons of a given search and location type, B-quality comparisons in the top 20%, C-quality comparisons in the top 30% and D-quality comparisons in the top 40%.
+          </p>
+          <p>
+            Finally, the literature level citation data has been calculated by adding up every paragraph citation from every publication processed, using those data to calculate chapter scores, and finall using those data to calculate percentage scores for both chapter and paragraph citations. Literature level data is used in to order the list of all <a class='link bg-light' href='{{ url_for("publications") }}'>publications</a>.
+          </p>
+          <p>
+            For now, when you click on an article, the list of comparisons that you'll see is filtered in two ways. First, it requires any comparison article to have at least 10 citations. Second, it displays only the top 10 most similar articles, along with those that are within 5% of the 10th most similar article. Shortly we will add the option for users to select their own search parameters in terms of number of citations for comparison articles and the number of articles to display.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class='tab-pane fade' id='future'>
+      <div class="card text-white bg-secondary mb-3">
+        <div class='card-header'><h3>Paths forward for the project</h3></div>
+        <div class='card-header'><h5>Improving functionality for scholars</h5></div>
+        <div class='card-body'>
+          <p>
+            The next significant revision for the website will allow users to upload a paper on Hume to have it processed using the tools underpinning the data currently available on the website. Once the paper is processed, users will be able to compare their uploaded papers to the literature as a whole and individual papers currently in the database.
+          </p>
+          <p>
+            The aim for this service is to provide a tool for scholars to compare a draft of a paper for any other papers in the literature with which they might not already be familiar. This service should help schoalrs find and engage with publications that are most interested in the parts of the <i>Treatise</i> that their own paper is focused on, streamlining the process of engaging with relevant literature.
+          </p>
+          <p>
+            Over time we'll be adding more control to the comparison results for papers. For example, we'll allow users to select the minimum number of citations in the compared articles, the total number of citations. Further down the road, we'll allow users to select comparison classes based on bibliographic information on publications such as year of publication, author, or journal.
+          </p>
+          <p>
+            Using more fine grained searches should allow a view of Hume scholarship on a given topic. For example, when did certain textual discoveries gain traction? Do certain journals focus on given textual locations more than others? Does the publication of a given article coincide with the beginning of or a renewed focus on a textual location?
+          </p>
+        </div>
+        <div class='card-header'><h5>Incorporating more philosophical topics</h5></div>
+        <div class='card-body'>
+          <p>
+            The larger goal of this project is to map philosophical topics in the <i>Treatise</i> and the scholarly literature on those topics. To that end, as is possible, we will be processing publications that comprise literature on other philosophcial topics. The result will be a database like the one created so far, but for each different philosophical topic defined by PhilPapers. Beyond creating a more fully defined map of philosophical topics in the <i>Treatise</i> the results of adding more topics may include:
+            <ul>
+              <li>Revealing, in a rigorously grounded way (i.e. on the basis of expert understanding of the <i>Treatise</i>), location relations within the text between important philosophical concepts. Such revelations may provide insight into. </li>
+              <li>Reveal higher patterns about how topics in the <i>Treatise</i> relate to one another in terms of how they connect or do not connect to similar foundational parts of the <i>Treatise</i>.
+              <li>Making it possible to classify publicationson the basis of which parts of the <i>Treatise</i> they cite.</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

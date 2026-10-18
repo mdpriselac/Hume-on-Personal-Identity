@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron my-3">
+  <h3 class="display-3"><i>Treatise</i> Reading List on Personal Identity</h3>
+  <p class="lead">Below you'll find a reading list of the top {{ number_return }} most cited {{ location }}s in Hume's <i>Treatise</i> in the scholarly literature on Hume's philosophy of personal identity, as well as the number of times the {{ location }} was cited.
+</div>
+<div class="container p-6 overflow-auto" style="height:400px">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">{{ location }}</th>
+        <th scope="col">Citation Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pair in cite_list %}
+      <tr class='table-light'>
+        <td> {{ pair[0] }}</td>
+        <td> {{ pair[1] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

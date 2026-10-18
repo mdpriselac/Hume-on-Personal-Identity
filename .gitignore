@@ -1,0 +1,12 @@
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+venv/
+.venv/
+.env
+.flaskenv
+*.json.key
+*-credentials.json
+# Full paper texts and PDFs stay local: they're other authors' copyrighted work
+pdfs/
+data/txts/

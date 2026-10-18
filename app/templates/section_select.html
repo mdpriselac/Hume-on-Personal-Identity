@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron my-3">
+  <h2 class="display-3">Select a Section</h2>
+  <p class="lead">Next, select a Section from the {{ bname }} {% if book=='0' or book=='App' or book=="Abs" %} or view the publications which cite the {{ bname }}{% endif %}</p>
+</div>
+<div class="container p-6">
+  {% if book=='0' or book=='App' or book=="Abs" %}
+  <a href="{{ url_for('book_lit_display', book=book) }}" class="btn btn-success btn-lg btn-block p-3" role="button">View the Literature Citation Data for {{ bname }}</a>
+  {% endif %}
+  {% for section in sections %}
+  {% if book=='0' or book=='App' or book=="Abs"%}
+  <a href="{{ url_for('sect_lit_display', book=book, sect=section) }}" class="btn btn-secondary btn-lg btn-block p-3" role="button">Section {{ section }}</a>
+  {% else %}
+  <a href="{{ url_for('section', book=book, sect=section) }}" class="btn btn-secondary btn-lg btn-block p-3" role="button">Section {{ section }}</a>
+  {% endif %}
+  {% endfor %}
+</div>
+{% endblock %}

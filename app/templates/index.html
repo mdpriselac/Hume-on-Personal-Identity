@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class='jumbotron'>
+    <h4 class="display-3">Mapping Hume's <i>Treatise</i></h4>
+    <p class="lead">Welcome to the <i>Treatise</i> Mapping Project. You'll find a brief introduction and description of the project below. You can find a more detailed accounting of the motivations for and workings of the project in the <a class='link' href="{{ url_for('project') }}">Project Overview</a>.</p>
+    <hr class='my-4'>
+    <p class='lead'> Table of Contents </p>
+    <table class='table'>
+      <tr>
+        <td><a class="link" href="{{ url_for('literature') }}">Literature as a whole</a>:</td>
+        <td>How often are different parts of the <i>Treatise</i>  cited by the entirety of the scholarly literature on Hume's philosophy of personal identity?</td>
+      </tr>
+
+      <tr>
+        <td><a class="link" href="{{ url_for('location') }}">Text Locations</a>:</td>
+        <td>Select a paragraph or a chapter from the <i>Treatise</i> and see how many times that location is cited by any individual publication in the literature.</td>
+      </tr>
+
+      <tr>
+        <td><a class="link" href="{{ url_for('publications') }}">Individual Publications</a>:</td>
+        <td>Select a publication and see which parts of the <i>Treatise</i> it cites and how often. You can also view the similarity of each each publication to the literature as a whole and any other publication in terms of their <i>Treatise</i> citations.</td>
+      </tr>
+
+      <tr>
+        <td><a class="link" href="{{ url_for('project') }}">Project Overview</a>:</td>
+        <td>A detailed overview of the methodology and motivation for the project.</td>
+      </tr>
+    </table>
+</div>
+<div class='container my-3' >
+<h3>So Far: A Map of Personal Identity in the <i>Treatise</i></h3>
+<br>
+<p>
+  The project's goal is to create a map of the philosophical contents <i>Treatise</i> based on where Hume scholars cite the <i>Treatise</i> in their publications. For now, we're starting with the topic of Personal Identity in the <i>Treatise</i>. In its current form, then, this website maps Hume's discussions of Personal Identity in the <i>Treatise</i>.
+</p>
+<p>
+  As the project has been executed so far, mapping Personal Identity in the <i>Treatise</i> involves creating a few different data sets that can be used by different kinds of users for different purposes.
+</p>
+
+<p>
+  For the Hume novice (eg. a graduate or undergraduate student new to Hume, or a professional philosopher with expertise outside of Early Modern Philosophy or Hume studies), you use the map provided in the <a class='link' href="{{ url_for('literature') }}">'Literature as a whole'</a> section of the website. There you'll find a visual map in the form a bar graph. Its x-axis is text locations in the <i>Treatise</i> (either paragraphs or chapters). The height of the bar at each location represents the number times that location has been cited in publications on Hume's philosophy of Personal Identity. In addition to the visualization, you can also find a list that breaks the text locations in the <i>Treatise</i> into tiers based on the frequency with which Hume scholars cite these paragraphs or chapters in their work. The guiding idea of these maps is that the more frequently a textual location is cited, the more important it is for properly understanding Hume's philosophy of personal identity. The Hume novice can treat these maps as guides for reading and getting familiar with Hume's views on personal identity as they re expressed in the <i>Treatise</i>.
+</p>
+
+<p>
+  For the Hume scholar, mapping the <i>Treaties</i> by processing publications on Hume's philosophy of personal identity means that this website can analyze and compare publications in terms of the textual locations in <i>Treatise</i> each cites. With that information we can look up which text locations a given publication cites how frequently it cites those, how the locations cited by a publication compare to the literature on Hume's philosophy of personal identity as a whole, which other articles are most similar and dissimilar in terms of the parts of the <i>Treatise</i> they cite, etc. We can also ask questions at the level of literature as a whole: which publications cite parts of the <i>Treatise</i> that is most similar to the literature as a whole? Which publications cite parts of the <i>Treatise</i> that are least common in the literature as a whole?
+</p>
+
+<p>
+  Information about individual publications in terms of which parts of the <i>Treatise</i> they cite, their similiarty to other publications, and their similarity to the literature as a whole can be found by starting in the <a class='link' href="{{ url_for('publications') }}">Individual Publications</a> section of the website. There you'll find a list of all the articles that have been processed so far, ranked in terms of their similarity to the literature as a whole. Clicking on an individual article will then take you to a page with bibliographic information about the article, a link to its <a class='link' href='https://philpapers.org'>PhilPapers</a> page, a list of the <i>Treatise</i> passages it cites, and a list of similar articles.
+</p>
+
+<p>
+  Both the novice and the scholar will find useful information in the <a class='link' href="{{ url_for('location') }}">Text Locations</a> section. There you can select a particular location in the <i>Treatise</i>. Once at the location, you'll be presented with a list of publications sorted by how frequently they cite the passage in question. So, if you've come across a particularly intersting passage while reading the <i>Treatise</i> and want to know which publications have examined that passage most closely, have a look here!
+</p>
+
+<p>
+  Finally, for an overview of the methodology behind this project, please look at <a class='link' href="{{ url_for('project') }}">Project Overview</a> section. There you'll find information on the following questions:
+  <ul>
+    <li>What makes a publication count as a publication on Hume's philosophy of personal identity?</li>
+    <li>How were citations extracted from each publication?</li>
+    <li>What do 'Strict' and 'Aggressive' mean in the various lists of citation locations?</li>
+    <li>How is similarity of collections of citations measured?</li>
+    <li>How will the project expand and what future uses will come with that expansion?</li>
+    <li>And more!</li>
+  </ul>
+</p>
+</div>
+
+{% endblock %}

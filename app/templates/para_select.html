@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron my-3">
+  <h2 class="display-3">Select a Paragraph</h2>
+  <p class="lead">Next, select a paragraph from {{ curr_location }} or view the publications which cite this chapter</p>
+</div>
+<div class="container p-6 overflow-auto" style="height:400px">
+  <a href="{{ url_for('chap_lit_display', book=book, sect=sect, chapter=chapter ) }}" class="btn btn-success btn-lg btn-block p-3" role="button">View Chapter-level Citation data from {{ curr_location }}</a>
+  {% for para in paragraphs %}
+  <a href="{{ url_for('para_lit_display', book=book, sect=sect, chapter=chapter, para=para ) }}" class="btn btn-secondary btn-lg btn-block p-3" role="button">Paragraph {{ para }}</a>
+  {% endfor %}
+</div>
+{% endblock %}

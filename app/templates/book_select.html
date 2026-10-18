@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron my-3">
+  <h2 class="display-3">Select a Book</h2>
+  <p class="lead">Following the links below will allow you to see how often different publications cite a given location in the <i>Treatise</i>. To begin, select a Book</p>
+</div>
+<div class="container p-6 overflow-auto" style="height:400px">
+  <a href="{{ url_for('book', book='0') }}" class="btn btn-secondary btn-lg btn-block p-3" role="button">Introduction</a>
+  <a href="{{ url_for('book', book='1') }}" class="btn btn-secondary btn-lg btn-block p-3" role="button">Book I</a>
+  <a href="{{ url_for('book', book='2') }}" class="btn btn-secondary btn-lg btn-block p-3" role="button">Book II</a>
+  <a href="{{ url_for('book', book='3') }}" class="btn btn-secondary btn-lg btn-block p-3" role="button">Book III</a>
+  <a href="{{ url_for('book', book='App') }}" class="btn btn-secondary btn-lg btn-block p-3" role="button">Appendix</a>
+  <a href="{{ url_for('book', book='Abs') }}" class="btn btn-secondary btn-lg btn-block p-3" role="button">Abstract</a>
+</div>
+{% endblock %}

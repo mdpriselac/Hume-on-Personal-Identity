@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="jumbotron my-3">
+  <h2 class="display-3">Literature As A Whole</h2>
+  <p class="lead">Below you can see the map of the <i>Treatise</i> created by compiling the citations from each article. The data is presented in two ways: first, as charts; second, as a customizable 'reading list'.</p>
+</div>
+
+<div class='container my-3'>
+  <p>
+    Processing each publication in the PhilPapers list of publications on Hume's philosophy of personal identity yields data on how frequently each textual location in the <i>Treatise</i> is cited. This data can serve as a guide to newcomers. The more frequently a location is cited, the more important for understanding Hume's philosophy of personal identity. The data is provided below in two forms, visually using tools from Tableau (you can download the Tableau data and Workbook below), and in a customizable list form.
+  </p>
+</div>
+
+<div class='container my-3'>
+  <div class='container my-2'>
+    <h3 class='my-1'>Personal Identity in the Treatise, Visually</h3>
+    <p>
+      The x-axis of each charts are textual locations in the <i>Treatise</i>. The first pair of charts uses Chapters for specifying locations while the second pair uses Paragraphs. The axis starts with the <i>Treatise</i>'s Introduction, followed by the three Books, then the Abstract and the Appendix.
+    </p>
+    <p>
+      The height of each bar represents the number of citations that have been made to a given textual location in the literature as a whole. If you hover your mouse over a bar it will tell you the text location (i.e. the chapter or paragraph) and the exact count of citations that were made in the literature to that location. You'll find two charts for each search type—one chart which represents the cites extracted from the literature under Strict search conditions, the other under Aggressive search conditions. For more information on the difference between Strict and Aggressive search conditions, see <a class='link' href='{{ url_for("project") }}'>Project Overview</a>. You'll also note that nearly every text location has a number followed by decimals—again, see the <a class='link' href='{{ url_for("project") }}'>Project Overview</a> for more information on how citations credit is assigned to text locations.
+    </p>
+  </div>
+
+  <div class='container-fluid my-3'>
+    <div class='tableauPlaceholder' id='viz1593293755808' style='position: relative'>
+      <noscript>
+        <a href='#'>
+          <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ch&#47;ChapterLevelCitationDataforPersonalIdentityinHumesTreatise&#47;Dashboard1&#47;1_rss.png' style='border: none' />
+        </a>
+      </noscript>
+      <object class='tableauViz'  style='display:none;'>
+        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+        <param name='embed_code_version' value='3' />
+        <param name='site_root' value='' />
+        <param name='name' value='ChapterLevelCitationDataforPersonalIdentityinHumesTreatise&#47;Dashboard1' />
+        <param name='tabs' value='no' />
+        <param name='toolbar' value='yes' />
+        <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ch&#47;ChapterLevelCitationDataforPersonalIdentityinHumesTreatise&#47;Dashboard1&#47;1.png' />
+        <param name='animate_transition' value='yes' />
+        <param name='display_static_image' value='yes' />
+        <param name='display_spinner' value='yes' />
+        <param name='display_overlay' value='yes' />
+        <param name='display_count' value='yes' />
+        <param name='language' value='en' />
+        <param name='filter' value='publish=yes' />
+      </object>
+    </div>
+    <script type='text/javascript'>
+      var divElement = document.getElementById('viz1593293755808');
+      var vizElement = divElement.getElementsByTagName('object')[0];
+        if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';}
+        else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';}
+        else { vizElement.style.width='100%';vizElement.style.height='727px';}
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    </script>
+
+    <div class='tableauPlaceholder' id='viz1593294031435' style='position: relative'>
+      <noscript>
+        <a href='#'>
+          <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pa&#47;ParagraphLevelCitationDataforPersonalIdentityinHumesTreatise&#47;Dashboard1&#47;1_rss.png' style='border: none' />
+        </a>
+      </noscript>
+      <object class='tableauViz'  style='display:none;'>
+        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+        <param name='embed_code_version' value='3' />
+        <param name='site_root' value='' />
+        <param name='name' value='ParagraphLevelCitationDataforPersonalIdentityinHumesTreatise&#47;Dashboard1' />
+        <param name='tabs' value='no' />
+        <param name='toolbar' value='yes' />
+        <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pa&#47;ParagraphLevelCitationDataforPersonalIdentityinHumesTreatise&#47;Dashboard1&#47;1.png' />
+        <param name='animate_transition' value='yes' />
+        <param name='display_static_image' value='yes' />
+        <param name='display_spinner' value='yes' />
+        <param name='display_overlay' value='yes' />
+        <param name='display_count' value='yes' />
+        <param name='language' value='en' />
+        <param name='filter' value='publish=yes' />
+      </object>
+    </div>
+    <script type='text/javascript'>
+      var divElement = document.getElementById('viz1593294031435');
+      var vizElement = divElement.getElementsByTagName('object')[0];
+        if ( divElement.offsetWidth > 800 ) {  vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';}
+        else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';}
+        else { vizElement.style.width='100%';vizElement.style.height='727px';}
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+      </script>
+  </div>
+</div>
+
+<div class='container py-5'>
+  <!-- Reading List,  default Strict, Chapter, 10 chapters-->
+  <div class='container my-2'>
+    <h3 class='my-1'>Personal Identity in the Treatise, as a List</h3>
+    <p>
+      Below is a list of the 10 most frequently cited chapters in the <i>Treatise</i> chapters, under strict search conditions, sorted in order of how often they've been cited in the literature and along with the number of times they've been cited.
+    </p>
+    <p>
+      You can create your own reading list for Hume on personal identity by selecting your own options from the list below and entering the number of paragarphs or chapters that you'd like
+    </p>
+  <div class='container my-3'>
+    <form action="" method="post" novalidate>
+      {{ form.hidden_tag() }}
+      <div class='container'>
+        <div class='row'>
+          <div class='col-sm'>
+            <p>
+              {{ form.searchSelect.label }}
+            </p>
+            <p>
+              {{ form.searchSelect}}<br>
+              {% for error in form.searchSelect.errors %}
+              <span style="color: red;">{{ error }} </span>
+              {% endfor %}
+            </p>
+          </div>
+          <div class='col-sm'>
+            <p>
+              {{ form.locationSelect.label }}
+            </p>
+            <p>
+              {{ form.locationSelect}}
+              {% for error in form.locationSelect.errors %}
+              <span style="color: red;">{{ error }} </span>
+              {% endfor %}
+            </p>
+          </div>
+          <div class='col-sm'>
+            <p>
+              {{ form.numberLocations.label }}
+            </p>
+            <p>
+              {{ form.numberLocations}} <br>
+              {% for error in form.numberLocations.errors %}
+              <span style="color: red;">{{ error }} </span>
+              {% endfor %}
+            </p>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-sm'>
+            <p>
+              {{ form.submit }}<br>
+              {% for error in form.submit.errors %}
+              <span style="color: red;">{{ error }} </span>
+              {% endfor %}
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="container my-3 overflow-auto" style="height:400px">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Chapter</th>
+          <th scope="col">Citation Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pair in citeList %}
+        <tr class='table-light'>
+          <td> {{ pair[0] }}</td>
+          <td> {{ pair[1] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+{% endblock %}

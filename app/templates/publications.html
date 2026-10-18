@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron my-3">
+  <h2 class="display-3">Publications</h2>
+  <p class="lead">Below you'll find a list of all the publications we've processed. They're listed in order of their similarity to the literature as a whole (as measured in the ways described in the <a class=link href="{{ url_for('project') }}">project overview</a></p>
+</div>
+<div class="container my-3">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#Strict-Paragraph">Strict Paragraph</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#Strict-Chapter">Strict Chapter</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#Aggressive-Paragraph">Aggressive Paragraph</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#Aggressive-Chapter">Aggressive Chapter</a>
+    </li>
+  </ul>
+  <div id="myTabContent" class="tab-content">
+
+    <div class="tab-pane fade active show" id="Strict-Paragraph">
+      <div class='card bg-secondary'>
+        <h5 class='card-header'>Strict search, paragraph-level citation data</h5>
+        <div class='card-body'>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Publication Name</th>
+                <th scope="col">Comparison Score</th>
+                <th scope="col">Number of Citations in Comparison Article</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for art in sp %}
+              <tr class='table-light'>
+                <th scope=row>{{ art['rank'] }}</th>
+                <td><a class=link href="{{ url_for('publication', identifier=art['file']) }}"> {{ art['title'] }}</a></td>
+                <td> {{ art['score'] }}</td>
+                <td> {{ art['cites'] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="Strict-Chapter">
+      <div class='card bg-success'>
+        <h5 class='card-header'>Strict search, chapter-level citation data</h5>
+        <div class='card-body'>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Publication Name</th>
+                <th scope="col">Comparison Score</th>
+                <th scope="col">Number of Citations in Comparison Article</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for art in sc %}
+              <tr class='table-light'>
+                <th scope=row>{{ art['rank'] }}</th>
+                <td><a class=link href="{{ url_for('publication', identifier=art['file']) }}"> {{ art['title'] }}</a></td>
+                <td> {{ art['score'] }}</td>
+                <td> {{ art['cites'] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="Aggressive-Paragraph">
+      <div class='card bg-warning'>
+        <h5 class='card-header'>Aggressive search, paragraph-level citation data</h5>
+        <div class='card-body'>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Publication Name</th>
+                <th scope="col">Comparison Score</th>
+                <th scope="col">Number of Citations in Comparison Article</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for art in ap %}
+              <tr class='table-light'>
+                <th scope=row>{{ art['rank'] }}</th>
+                <td><a class=link href="{{ url_for('publication', identifier=art['file']) }}"> {{ art['title'] }}</a></td>
+                <td> {{ art['score'] }}</td>
+                <td> {{ art['cites'] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="Aggressive-Chapter">
+      <div class='card bg-danger'>
+        <h4 class='card-header'>Aggressive search, chapter-level citation data</h4>
+        <div class='card-body'>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Publication Name</th>
+                <th scope="col">Comparison Score</th>
+                <th scope="col">Number of Citations in Comparison Article</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for art in ac %}
+              <tr class='table-light'>
+                <th scope=row>{{ art['rank'] }}</th>
+                <td><a class=link href="{{ url_for('publication', identifier=art['file']) }}"> {{ art['title'] }}</a></td>
+                <td> {{ art['score'] }}</td>
+                <td> {{ art['cites'] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

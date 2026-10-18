@@ -1,0 +1,7 @@
+.git
+notebooks
+**/__pycache__
+**/.ipynb_checkpoints
+.env
+.flaskenv
+venv
