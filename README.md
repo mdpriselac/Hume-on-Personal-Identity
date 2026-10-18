@@ -29,5 +29,6 @@ Then open http://localhost:8080. The image is pinned to Python 3.8 and the 2020 
 
 ```bash
 gcloud run deploy treatise-ur --source . --region us-central1 --allow-unauthenticated \
+  --service-account treatise-ur-run@treatise-mapping-ur.iam.gserviceaccount.com \
   --set-env-vars SECRET_KEY=<random string>
 ```
