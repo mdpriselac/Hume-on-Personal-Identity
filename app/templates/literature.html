@@ -9,7 +9,7 @@
 
 <div class='container my-3'>
   <p>
-    Processing each publication in the PhilPapers list of publications on Hume's philosophy of personal identity yields data on how frequently each textual location in the <i>Treatise</i> is cited. This data can serve as a guide to newcomers. The more frequently a location is cited, the more important for understanding Hume's philosophy of personal identity. The data is provided below in two forms, visually using tools from Tableau (you can download the Tableau data and Workbook below), and in a customizable list form.
+    Processing each publication in the PhilPapers list of publications on Hume's philosophy of personal identity yields data on how frequently each textual location in the <i>Treatise</i> is cited. This data can serve as a guide to newcomers. The more frequently a location is cited, the more important for understanding Hume's philosophy of personal identity. The data is provided below in two forms, visually as charts (you can download the chart data below them), and in a customizable list form.
   </p>
 </div>
 
@@ -20,76 +20,139 @@
       The x-axis of each charts are textual locations in the <i>Treatise</i>. The first pair of charts uses Chapters for specifying locations while the second pair uses Paragraphs. The axis starts with the <i>Treatise</i>'s Introduction, followed by the three Books, then the Abstract and the Appendix.
     </p>
     <p>
-      The height of each bar represents the number of citations that have been made to a given textual location in the literature as a whole. If you hover your mouse over a bar it will tell you the text location (i.e. the chapter or paragraph) and the exact count of citations that were made in the literature to that location. You'll find two charts for each search type—one chart which represents the cites extracted from the literature under Strict search conditions, the other under Aggressive search conditions. For more information on the difference between Strict and Aggressive search conditions, see <a class='link' href='{{ url_for("project") }}'>Project Overview</a>. You'll also note that nearly every text location has a number followed by decimals—again, see the <a class='link' href='{{ url_for("project") }}'>Project Overview</a> for more information on how citations credit is assigned to text locations.
+      The height of each bar represents the number of citations that have been made to a given textual location in the literature as a whole. If you hover your mouse over a bar it will tell you the text location (i.e. the chapter or paragraph) and the exact count of citations that were made in the literature to that location. You can also use the Title menu above each set of charts to see the citations from a single publication. You'll find two charts for each search type—one chart which represents the cites extracted from the literature under Strict search conditions, the other under Aggressive search conditions. For more information on the difference between Strict and Aggressive search conditions, see <a class='link' href='{{ url_for("project") }}'>Project Overview</a>. You'll also note that nearly every text location has a number followed by decimals—again, see the <a class='link' href='{{ url_for("project") }}'>Project Overview</a> for more information on how citations credit is assigned to text locations.
     </p>
   </div>
 
   <div class='container-fluid my-3'>
-    <div class='tableauPlaceholder' id='viz1593293755808' style='position: relative'>
-      <noscript>
-        <a href='#'>
-          <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ch&#47;ChapterLevelCitationDataforPersonalIdentityinHumesTreatise&#47;Dashboard1&#47;1_rss.png' style='border: none' />
-        </a>
-      </noscript>
-      <object class='tableauViz'  style='display:none;'>
-        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-        <param name='embed_code_version' value='3' />
-        <param name='site_root' value='' />
-        <param name='name' value='ChapterLevelCitationDataforPersonalIdentityinHumesTreatise&#47;Dashboard1' />
-        <param name='tabs' value='no' />
-        <param name='toolbar' value='yes' />
-        <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ch&#47;ChapterLevelCitationDataforPersonalIdentityinHumesTreatise&#47;Dashboard1&#47;1.png' />
-        <param name='animate_transition' value='yes' />
-        <param name='display_static_image' value='yes' />
-        <param name='display_spinner' value='yes' />
-        <param name='display_overlay' value='yes' />
-        <param name='display_count' value='yes' />
-        <param name='language' value='en' />
-        <param name='filter' value='publish=yes' />
-      </object>
-    </div>
-    <script type='text/javascript'>
-      var divElement = document.getElementById('viz1593293755808');
-      var vizElement = divElement.getElementsByTagName('object')[0];
-        if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';}
-        else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';}
-        else { vizElement.style.width='100%';vizElement.style.height='727px';}
-        var scriptElement = document.createElement('script');
-        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);
-    </script>
+    <style>
+      .lit-chart-box { position: relative; height: 420px; }
+      .lit-chart-box.para { height: 340px; }
+      .lit-chart-filter { width: auto; max-width: 360px; }
+    </style>
 
-    <div class='tableauPlaceholder' id='viz1593294031435' style='position: relative'>
-      <noscript>
-        <a href='#'>
-          <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pa&#47;ParagraphLevelCitationDataforPersonalIdentityinHumesTreatise&#47;Dashboard1&#47;1_rss.png' style='border: none' />
-        </a>
-      </noscript>
-      <object class='tableauViz'  style='display:none;'>
-        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-        <param name='embed_code_version' value='3' />
-        <param name='site_root' value='' />
-        <param name='name' value='ParagraphLevelCitationDataforPersonalIdentityinHumesTreatise&#47;Dashboard1' />
-        <param name='tabs' value='no' />
-        <param name='toolbar' value='yes' />
-        <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pa&#47;ParagraphLevelCitationDataforPersonalIdentityinHumesTreatise&#47;Dashboard1&#47;1.png' />
-        <param name='animate_transition' value='yes' />
-        <param name='display_static_image' value='yes' />
-        <param name='display_spinner' value='yes' />
-        <param name='display_overlay' value='yes' />
-        <param name='display_count' value='yes' />
-        <param name='language' value='en' />
-        <param name='filter' value='publish=yes' />
-      </object>
+    <div class='card mb-4'>
+      <div class='card-body'>
+        <div class='d-flex flex-wrap justify-content-between align-items-center mb-2'>
+          <h4 class='card-title mb-2 mr-3'>Chapter Level Citation Data</h4>
+          <div class='form-group mb-2'>
+            <label class='small mb-0 mr-1' for='chapterFilter'>Title</label>
+            <select class='custom-select custom-select-sm lit-chart-filter' id='chapterFilter' data-level='chapter'>
+              <option value=''>All publications</option>
+            </select>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-lg-6 mb-3'>
+            <h5>Strict Search</h5>
+            <div class='lit-chart-box'><canvas id='chart-chapter-strict' aria-label='Strict search, chapter level citation data' role='img'></canvas></div>
+          </div>
+          <div class='col-lg-6 mb-3'>
+            <h5>Aggressive Search</h5>
+            <div class='lit-chart-box'><canvas id='chart-chapter-aggressive' aria-label='Aggressive search, chapter level citation data' role='img'></canvas></div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class='card mb-4'>
+      <div class='card-body'>
+        <div class='d-flex flex-wrap justify-content-between align-items-center mb-2'>
+          <h4 class='card-title mb-2 mr-3'>Paragraph Level Citation Data</h4>
+          <div class='form-group mb-2'>
+            <label class='small mb-0 mr-1' for='paragraphFilter'>Title</label>
+            <select class='custom-select custom-select-sm lit-chart-filter' id='paragraphFilter' data-level='paragraph'>
+              <option value=''>All publications</option>
+            </select>
+          </div>
+        </div>
+        <h5>Strict Search</h5>
+        <div class='lit-chart-box para mb-4'><canvas id='chart-paragraph-strict' aria-label='Strict search, paragraph level citation data' role='img'></canvas></div>
+        <h5>Aggressive Search</h5>
+        <div class='lit-chart-box para'><canvas id='chart-paragraph-aggressive' aria-label='Aggressive search, paragraph level citation data' role='img'></canvas></div>
+      </div>
+    </div>
+
+    <p class='small'>
+      Download the chart data (one row per publication and location):
+      <a class='link' href='{{ url_for("literature_data_download", filename="strict_chap_tableau.csv") }}'>strict, chapters</a> ·
+      <a class='link' href='{{ url_for("literature_data_download", filename="agg_chap_tableau.csv") }}'>aggressive, chapters</a> ·
+      <a class='link' href='{{ url_for("literature_data_download", filename="strict_para_tableau.csv") }}'>strict, paragraphs</a> ·
+      <a class='link' href='{{ url_for("literature_data_download", filename="agg_para_tableau.csv") }}'>aggressive, paragraphs</a>
+    </p>
+
+    <script src='https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js'></script>
     <script type='text/javascript'>
-      var divElement = document.getElementById('viz1593294031435');
-      var vizElement = divElement.getElementsByTagName('object')[0];
-        if ( divElement.offsetWidth > 800 ) {  vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';}
-        else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';}
-        else { vizElement.style.width='100%';vizElement.style.height='727px';}
-        var scriptElement = document.createElement('script');
-        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);
-      </script>
+      (function () {
+        var BAR = '#4e79a7';
+        var charts = {};
+
+        function seriesFor(data, level, search, pub) {
+          var lv = data.levels[level];
+          if (!pub) { return lv[search].literature; }
+          var scores = lv[search].publications[pub] || {};
+          return lv.locations.map(function (loc) { return scores[loc] || 0; });
+        }
+
+        function makeChart(data, level, search) {
+          var lv = data.levels[level];
+          return new Chart(document.getElementById('chart-' + level + '-' + search), {
+            type: 'bar',
+            data: {
+              labels: lv.locations,
+              datasets: [{ label: 'Score', data: seriesFor(data, level, search, ''), backgroundColor: BAR,
+                           barPercentage: 1.0, categoryPercentage: level === 'paragraph' ? 1.0 : 0.85 }]
+            },
+            options: {
+              maintainAspectRatio: false,
+              animation: false,
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  displayColors: false,
+                  callbacks: {
+                    title: function (items) { return 'Location: ' + items[0].label; },
+                    label: function (item) { return 'Score: ' + item.parsed.y; }
+                  }
+                }
+              },
+              scales: {
+                x: { title: { display: true, text: 'Location' }, grid: { display: false },
+                     ticks: { autoSkip: true, maxRotation: 90, minRotation: 90, font: { size: 11 } } },
+                y: { title: { display: true, text: 'Score' }, beginAtZero: true }
+              }
+            }
+          });
+        }
+
+        fetch('{{ url_for("literature_chart_data") }}')
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            var ids = Object.keys(data.titles).sort(function (a, b) {
+              return data.titles[a].localeCompare(data.titles[b]);
+            });
+            ['chapter', 'paragraph'].forEach(function (level) {
+              ['strict', 'aggressive'].forEach(function (search) {
+                charts[level + '-' + search] = makeChart(data, level, search);
+              });
+              var select = document.getElementById(level + 'Filter');
+              ids.forEach(function (id) {
+                var opt = document.createElement('option');
+                opt.value = id;
+                opt.textContent = data.titles[id];
+                select.appendChild(opt);
+              });
+              select.addEventListener('change', function () {
+                ['strict', 'aggressive'].forEach(function (search) {
+                  var chart = charts[level + '-' + search];
+                  chart.data.datasets[0].data = seriesFor(data, level, search, select.value);
+                  chart.update();
+                });
+              });
+            });
+          });
+      })();
+    </script>
   </div>
 </div>
 

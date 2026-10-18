@@ -1,5 +1,5 @@
 from app import app, basedir
-from flask import render_template, url_for, redirect, flash
+from flask import render_template, url_for, redirect, flash, Response, send_from_directory, abort
 from app.models import Paper, Citation, p_to_dict, p_from_dict, c_to_dict, c_from_dict
 import pandas as pd
 import json
@@ -11,7 +11,9 @@ from data.lit_level_data import l_a_w_p, l_a_w_c, l_s_w_p, l_s_w_c
 from functions_and_classes.display_only_ops import generateListOfCites, df_cns, generateCompData
 from functions_and_classes.lit_level_operations import locationFrequency
 from app.forms import readingListForm
-from functions_and_classes.cloud_io import p_dict_from_fire
+from functions_and_classes.cloud_io import p_dict_from_fire, RUNTIME_DIR
+from functions_and_classes.chart_data import chart_data_json
+import os
 bookdict={'0':'Introduction', '1':'Book I', '2':'Book II', '3':'Book III', 'Abs':'Abstract', 'App':'Appendix'}
 
 
@@ -156,6 +158,19 @@ def literature():
         return redirect(url_for('reading_list', search=srch, location=loca, number_return=nums))
 
     return render_template('literature.html', title="Overview of the Personal Identity Literature", citeList=citeList, form=form)
+
+
+@app.route('/literature/chart-data.json')
+def literature_chart_data():
+    return Response(chart_data_json, mimetype='application/json')
+
+chart_downloads = ['strict_chap_tableau.csv', 'agg_chap_tableau.csv', 'strict_para_tableau.csv', 'agg_para_tableau.csv']
+
+@app.route('/literature/data/<filename>')
+def literature_data_download(filename):
+    if filename not in chart_downloads:
+        abort(404)
+    return send_from_directory(os.path.join(RUNTIME_DIR, 'downloads'), filename, as_attachment=True)
 
 
 @app.route('/literature/<search>/<location>/<number_return>')
