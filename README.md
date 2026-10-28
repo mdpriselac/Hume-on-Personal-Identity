@@ -23,12 +23,31 @@ docker build --platform linux/amd64 -t treatise-ur .
 docker run --rm -p 8080:8080 -e SECRET_KEY=dev treatise-ur
 ```
 
-Then open http://localhost:8080. The image is pinned to Python 3.8 and the 2020 library versions so the site behaves as it originally did.
+Then open http://localhost:8080. The app refuses to start without `SECRET_KEY`. The image is pinned to Python 3.8 and the 2020 library versions so the site behaves as it originally did.
 
 ## Deploy (Cloud Run)
 
 ```bash
 gcloud run deploy treatise-ur --source . --region us-central1 --allow-unauthenticated \
-  --service-account treatise-ur-run@treatise-mapping-ur.iam.gserviceaccount.com \
+  --service-account <run-service-account>@<your-project>.iam.gserviceaccount.com \
   --set-env-vars SECRET_KEY=<random string>
 ```
+
+## How this was built
+
+I wrote this project by hand between October 2019 and July 2020: the citation parsing, the scoring
+and comparison code, the Flask app and the notebooks in `notebooks/`. Its development history
+(from the first commit on 27 May 2020) lives in a separate working repository on my machine, so
+this repository's history starts in 2026.
+
+In October 2026 a Claude agent restored it from that repository (the commits carry a
+`Co-Authored-By: Claude` trailer). It moved the data that used to be read from Firestore and Cloud
+Storage into plain files, replaced the Tableau Public charts with Chart.js, upgraded the web
+libraries for security, and packaged it for Cloud Run. The pages, templates and processing code
+are otherwise as I left them in 2020.
+
+The 2026 rebuild of the same project, with an LLM-assisted citation pipeline, is
+[treatise-mapping-new](https://github.com/mdpriselac/treatise-mapping-new).
+[2020 vs 2026](https://github.com/mdpriselac/treatise-mapping-new/blob/main/docs/2020-vs-2026.md)
+compares the two, and the project page is
+[outsidethevillage.com/hume](https://outsidethevillage.com/hume.html).
